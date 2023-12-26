@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block start %}
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+    <h3 class="text-primary">Add New Student</h3>
+    {% csrf_token %}
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1">Name</label>
+            <input name="name" type="text" class="form-control text-bg-light" id="exampleFormControlInput1" placeholder="Enter Student Name">
+          </div>
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1">Roll No.</label>
+            <input name="roll_no" type="number" class="form-control text-bg-light" id="exampleFormControlInput1" placeholder="Enter Roll No.">
+          </div>
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1"> DOB </label>
+            <input name="dob" type="date"  class="form-control text-bg-light" id="exampleFormControlInput1" placeholder="Enter DOB">
+          </div>
+
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1">Email address</label>
+            <input name="email" type="email" class="form-control text-bg-light" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlSelect1">Program</label>
+            <select  name="program"  class="form-control text-bg-light" id="exampleFormControlSelect1">
+              <option value="">Select Program</option>
+              <option value="PHD">PHD</option>
+              <option value="MPhill">MPhill</option>
+              <option value="ADP">ADP</option>
+              <option value="BS">BS</option>
+            </select>
+          </div>
+
+        <div class="form-group">
+          <label for="formFile" class="text-primary">Photo</label>
+          <input class="form-control" type="file" id="formFile" name="image">
+        </div>
+
+        <div class="form-group">
+            <label class="text-primary" for="exampleFormControlSelect1">Is Adult</label>
+            <select name="is_adult"   class="form-control text-bg-light" id="exampleFormControlSelect1">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+        <div class="form-group mt-3">
+            <button class="btn btn-success" type="submit"> Add Student </button>
+          </div>
+</form>
+{% endblock %}
+

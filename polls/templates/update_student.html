@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block start %}
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+    <h3 class="text-primary"> {{ page }}</h3>
+    {% csrf_token %}
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1">Name</label>
+            <input required name="name" type="text" value="{{ student.name }}" class="form-control text-bg-light" id="exampleFormControlInput1" placeholder="Enter Student Name">
+          </div>
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1">Roll No.</label>
+            <input required name="roll_no" type="number"  value="{{ student.roll_no }}"  class="form-control text-bg-light" id="exampleFormControlInput1" placeholder="Enter Roll No.">
+          </div>
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1"> DOB </label>
+            <input required name="dob" type="date"  value="{{ student.dob }}"  class="form-control text-bg-light" id="dob" placeholder="Enter DOB">
+          </div>
+
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlInput1">Email address</label>
+            <input name="email" type="email"  value="{{ student.email }}"  class="form-control text-bg-light" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label class="text-primary" for="exampleFormControlSelect1">Program</label>
+            <select  name="program"  class="form-control text-bg-light" id="exampleFormControlSelect1">
+              <option  value="">Select Program</option>
+              <option {% if student.program == "PHD" %} selected {% endif %} value="PHD">PHD</option>
+              <option {% if student.program == "MPhill" %} selected {% endif %} value="MPhill">MPhill</option>
+              <option {% if student.program == "ADP" %} selected {% endif %} value="ADP">ADP</option>
+              <option {% if student.program == "BS" %} selected {% endif %} value="BS">BS</option>
+            </select>
+          </div>
+
+        <div class="form-group">
+          <label for="formFile" class="text-primary">Photo</label>
+          <input class="form-control" type="file" id="formFile" name="image">
+        </div>
+
+        <div class="form-group">
+            <label class="text-primary" for="exampleFormControlSelect1">Is Adult</label>
+            <select name="is_adult"   class="form-control text-bg-light" id="exampleFormControlSelect1">
+              <option {% if student.is_adult == "1" %} selected {% endif %}  value="1">Yes</option>
+              <option {% if student.is_adult == "0" %} selected {% endif %}  value="0">No</option>
+            </select>
+          </div>
+
+        <div class="form-group mt-3">
+            <button class="btn btn-success" type="submit"> Update Student </button>
+          </div>
+</form>
+{% endblock %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the date input element
+        var dateInput = document.getElementById("db");
+
+        // Set the desired date format (YYYY-MM-DD in this example)
+        var dateFormat = function(date) {
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1).toString().padStart(2, '0');
+            var day = date.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        };
+
+        // Set the initial value with the desired format
+        dateInput.value = dateFormat(new Date());
+    });
+</script>
+
