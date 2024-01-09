@@ -1,5 +1,5 @@
 """
-WSGI config for getting_started project.
+WSGI bims for getting_started project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

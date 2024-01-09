@@ -29,7 +29,7 @@ urlpatterns = [
     path('del-student/<id>/', delStudent, name="delStudent"),
     path('students/', students, name="students"),
     path("admin/", admin.site.urls),
-    path('login/',login, name="login"),
+    path('login_page/',login_page, name="login_page"),
     path('register/',register,name="register")
 ]
 

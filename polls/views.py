@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth import authenticate,login
 
 
 def index(request):
@@ -45,7 +46,7 @@ def register(request):
 
 
 # login a user
-def login(request):
+def login_page(request):
     context = {"page": "User Login Page"}
 
     if request.method =='POST':
@@ -53,9 +54,19 @@ def login(request):
         username = data.get('username')
         password = data.get('password')
 
-        if User.objects.filter(username = username).exists():
+        if not User.objects.filter(username = username).exists():
             messages.info(request,'Invalid Username')
-            return redirect('/userList/')
+            return redirect('/login_page/')
+
+        user  = authenticate(username = username, password = password)
+
+        if user is None:
+            messages.info(request,'Invalid Password')
+            redirect('/login_page/')
+
+        else:
+          login(request,user)
+          redirect('/home/')
 
 
     return render(request, 'login.html', context)

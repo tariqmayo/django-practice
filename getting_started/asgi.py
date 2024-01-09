@@ -1,5 +1,5 @@
 """
-ASGI config for getting_started project.
+ASGI bims for getting_started project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
